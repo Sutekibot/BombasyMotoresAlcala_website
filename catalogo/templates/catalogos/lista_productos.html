@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo - Motores Alcalá</title>
+</head>
+<body>
+    <h1>Catálogo Web de Motores Alcalá</h1>
+    <hr>
+    <ul>
+        {% for producto in productos %}
+            <li style="margin-bottom: 15px;">
+                <strong>{{ producto.name }}</strong> (SKU: {{ producto.code }})<br>
+                Clasificación: {{ producto.classification }} <br>
+                Stock Total Disponible: {{ producto.stock_total }}
+            </li>
+        {% empty %}
+            <p>No hay motores disponibles en este momento.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>

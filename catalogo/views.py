@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from .models import Product
 
-# Create your views here.
+def lista_productos(request):
+    producto = Product.objects.filter(is_active=True)
+    return render(request, 'catalogos/lista_productos.html', {'productos': producto})
