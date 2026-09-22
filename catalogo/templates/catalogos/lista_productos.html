@@ -1,22 +1,36 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Catálogo - Motores Alcalá</title>
-</head>
-<body>
-    <h1>Catálogo Web de Motores Alcalá</h1>
-    <hr>
-    <ul>
-        {% for producto in productos %}
-            <li style="margin-bottom: 15px;">
-                <strong>{{ producto.name }}</strong> (SKU: {{ producto.code }})<br>
-                Clasificación: {{ producto.classification }} <br>
-                Stock Total Disponible: {{ producto.stock_total }}
-            </li>
-        {% empty %}
-            <p>No hay motores disponibles en este momento.</p>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends 'catalogos/base.html' %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h2 class="fw-bold">Catálogo de Motores</h2>
+        <hr>
+    </div>
+</div>
+
+<div class="row">
+    {% for producto in productos %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title text-primary fw-bold">{{ producto.name }}</h5>
+                    <h6 class="card-subtitle mb-3 text-muted">SKU: {{ producto.code }}</h6>
+                    
+                    <p class="card-text">
+                        <strong>Clasificación:</strong> {{ producto.classification }} <br>
+                        <strong>Tipo:</strong> {{ producto.product_type }}
+                    </p>
+                </div>
+                <div class="card-footer bg-white border-top text-center">
+                    <span class="badge bg-success mb-2">Stock Disponible: {{ producto.stock_total }}</span>
+                    <button class="btn btn-outline-dark w-100">Ver Detalles</button>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="col-12">
+            <div class="alert alert-warning">No hay motores disponibles en este momento.</div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
