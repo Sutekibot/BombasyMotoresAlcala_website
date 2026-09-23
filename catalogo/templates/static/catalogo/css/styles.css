@@ -1,0 +1,43 @@
+:root {
+    #0A2540;
+    #E6F0FA;
+    #0070F3;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hero-sextion {
+    background-color: var(--azul-claro);
+    padding: 80px 0;
+    border-bottom: 4px solid var(--azul-vibrante);
+}
+
+hero-text { color: var(--azul-marino);}
+
+.categoria-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    border: 1px solid #dee2e6;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.categoria-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(10, 37, 64, 0.15);
+    color: var(--azul-vibrante);
+}
+
+.footer-custom {
+    background-color: var(--azul-marino);
+    color: white;
+}
+.social-icons {
+    front-size: 1.5rem;
+    color: white;
+    transition: color 0.3s ease;
+}
+.social-icons:hover {color: var(--azul-vibrante);}

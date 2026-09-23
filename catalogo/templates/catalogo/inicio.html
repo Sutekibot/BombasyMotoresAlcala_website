@@ -1,0 +1,53 @@
+{% extends 'catalogo/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Sección de Presentación (Hero) -->
+<section class="hero-section text-center text-md-start">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="display-4 fw-bold hero-text mb-4">Potencia y Calidad Industrial</h1>
+                <p class="lead text-secondary mb-4">Somos Motores Alcalá. Te ofrecemos el mejor catálogo de equipos industriales con distribución directa. Aumenta la eficiencia de tus proyectos comprando con expertos.</p>
+                <a href="{% url 'lista_productos' %}" class="btn btn-primary btn-lg px-5 rounded-pill shadow">Ver Catálogo Completo</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de Categorías -->
+<section class="container mt-5 pt-5 text-center">
+    <h2 class="fw-bold mb-5 hero-text">CATEGORÍAS PRINCIPALES</h2>
+    <div class="row g-4">
+        <!-- Categoría 1: Motores -->
+        <div class="col-md-4">
+            <a href="{% url 'lista_productos' %}" class="categoria-card p-4 h-100">
+                <i class="fa-solid fa-gear fa-4x mb-3" style="color: var(--azul-vibrante);"></i>
+                <h4 class="fw-bold">Motores</h4>
+                <p class="text-muted">Eléctricos, trifásicos y monofásicos.</p>
+                <span class="btn btn-outline-primary btn-sm mt-2">Ver Modelos</span>
+            </a>
+        </div>
+        
+        <!-- Categoría 2: Bombas -->
+        <div class="col-md-4">
+            <a href="{% url 'lista_productos' %}" class="categoria-card p-4 h-100">
+                <i class="fa-solid fa-water fa-4x mb-3" style="color: var(--azul-vibrante);"></i>
+                <h4 class="fw-bold">Bombas</h4>
+                <p class="text-muted">Sumergibles, centrífugas y de presión.</p>
+                <span class="btn btn-outline-primary btn-sm mt-2">Ver Modelos</span>
+            </a>
+        </div>
+
+        <!-- Categoría 3: Reductores -->
+        <div class="col-md-4">
+            <a href="{% url 'lista_productos' %}" class="categoria-card p-4 h-100">
+                <i class="fa-solid fa-cogs fa-4x mb-3" style="color: var(--azul-vibrante);"></i>
+                <h4 class="fw-bold">Reductores</h4>
+                <p class="text-muted">Coronas, sinfín y engranes industriales.</p>
+                <span class="btn btn-outline-primary btn-sm mt-2">Ver Modelos</span>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

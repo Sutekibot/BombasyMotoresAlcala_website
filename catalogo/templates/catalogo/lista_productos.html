@@ -1,4 +1,4 @@
-{% extends 'catalogos/base.html' %}
+{% extends 'catalogo/base.html' %}
 
 {% block content %}
 <div class="row mb-4">
@@ -17,6 +17,7 @@
                     <h6 class="card-subtitle mb-3 text-muted">SKU: {{ producto.code }}</h6>
                     
                     <p class="card-text">
+                        
                         <strong>Clasificación:</strong> {{ producto.classification }} <br>
                         <strong>Tipo:</strong> {{ producto.product_type }}
                     </p>
