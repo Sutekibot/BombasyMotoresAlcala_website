@@ -1,20 +1,19 @@
 :root {
-    #0A2540;
-    #E6F0FA;
-    #0070F3;
+    --azul-marino: #0A2540;
+    --azul-claro: #E6F0FA;
+    --azul-vibrante: #0070F3;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.hero-sextion {
+.hero-section {
     background-color: var(--azul-claro);
-    padding: 80px 0;
+    padding: 120px 0 80px 0;
     border-bottom: 4px solid var(--azul-vibrante);
 }
-
-hero-text { color: var(--azul-marino);}
+.hero-text { color: var(--azul-marino); }
 
 .categoria-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -35,9 +34,28 @@ hero-text { color: var(--azul-marino);}
     background-color: var(--azul-marino);
     color: white;
 }
-.social-icons {
-    front-size: 1.5rem;
+.social-icon {
+    font-size: 1.5rem;
     color: white;
+    margin-right: 15px;
     transition: color 0.3s ease;
 }
-.social-icons:hover {color: var(--azul-vibrante);}
+.social-icon:hover { color: var(--azul-vibrante); }
+
+.nav-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    color: var(--azul-marino);
+    background-color: transparent;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover, .nav-btn:focus {
+    border-color: var(--azul-marino);
+    background-color: var(--azul-claro);
+    color: var(--azul-marino);
+}
