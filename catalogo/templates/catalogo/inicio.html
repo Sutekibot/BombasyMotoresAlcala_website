@@ -2,18 +2,44 @@
 {% load static %}
 
 {% block content %}
-<section class="hero-section text-center text-md-start">
+<section class="hero-section text-center text-lg-start">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-8">
+        <div class="row align-items-center justify-content-between">
+            
+            <!-- Columna Izquierda: Textos (ocupa 6 columnas) -->
+            <div class="col-lg-6 mb-5 mb-lg-0">
                 <h1 class="display-4 fw-bold hero-text mb-4">Potencia y Calidad Industrial</h1>
-                <p class="lead text-secondary mb-4">Somos Motores Alcalá. Te ofrecemos el mejor catálogo de equipos industriales con distribución directa. Aumenta la eficiencia de tus proyectos comprando con expertos.</p>
+                <p class="lead hero-text fw-medium mb-4">
+                    Somos <strong>Motores Alcalá</strong>. Estamos contigo desde hace <strong>10 años</strong> y te ofrecemos el mejor catálogo de equipos industriales con distribución directa. Aumenta la eficiencia de tus proyectos comprando con expertos.
+                </p>
                 <a href="{% url 'lista_productos' %}" class="btn btn-primary btn-lg px-5 rounded-pill shadow">Ver Catálogo Completo</a>
             </div>
+            
+            <!-- Columna Derecha: Slider de Marcas (ocupa 5 columnas) -->
+            <div class="col-lg-5">
+                <div class="brand-slider-container text-center">
+                    <h5 class="fw-bold text-secondary mb-4">Marcas de Calidad que Manejamos</h5>
+                    <div class="brand-slider">
+                        <div class="brand-track">
+                            <!-- Bloque 1: Imágenes Originales -->
+                            <img src="{% static 'catalogo/img/marca1.png' %}" alt="Marca 1" class="brand-img">
+                            <img src="{% static 'catalogo/img/marca2.png' %}" alt="Marca 2" class="brand-img">
+                            <img src="{% static 'catalogo/img/marca3.png' %}" alt="Marca 3" class="brand-img">
+                            <img src="{% static 'catalogo/img/marca4.png' %}" alt="Marca 4" class="brand-img">
+                            <!-- Bloque 2: Clones idénticos (Necesarios para que el bucle se vea infinito) -->
+                            <img src="{% static 'catalogo/img/marca1.png' %}" alt="Marca 1" class="brand-img">
+                            <img src="{% static 'catalogo/img/marca2.png' %}" alt="Marca 2" class="brand-img">
+                            <img src="{% static 'catalogo/img/marca3.png' %}" alt="Marca 3" class="brand-img">
+                            <img src="{% static 'catalogo/img/marca4.png' %}" alt="Marca 4" class="brand-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                    
 <!-- Sección de Categorías -->
 <section class="container mt-5 pt-5 text-center">
     <h2 class="fw-bold mb-5 hero-text">CATEGORÍAS PRINCIPALES</h2>
