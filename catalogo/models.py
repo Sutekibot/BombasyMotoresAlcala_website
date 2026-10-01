@@ -22,6 +22,7 @@ class Product(models.Model):
     product_type = models.CharField(max_length=100, verbose_name='Tipo')
     classification = models.CharField(max_length=100, verbose_name='Clasificación')
     is_active = models.BooleanField(default=True, verbose_name='Estatus')
+    manufacturer = models.CharField(max_length=100, verbose_name='Fabricante')
 
     weight = models.DecimalField(max_digits=10, decimal_places=4, null=True, blank=True, verbose_name='Peso')
     height = models.DecimalField(max_digits=10, decimal_places=4, null=True, blank=True, verbose_name='Altura')
@@ -33,6 +34,7 @@ class Product(models.Model):
     
     description = models.TextField(verbose_name='Descripción del Producto')
     locations = models.ManyToManyField(Location, through='LocationInventory', verbose_name='Ubicaciones')
+    image = models.ImageField(upload_to='productos/', null=True, blank=True, verbose_name='Imagen del Producto')
 
     @property
     def stock_total(self):

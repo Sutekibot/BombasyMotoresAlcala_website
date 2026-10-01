@@ -73,19 +73,19 @@ body {
 }
 .brand-track {
     display: flex;
-    width: calc(260px * 8);
-    animation: scroll-bands 18s linear infinite;
+    width: calc(350px * 8);
+    animation: scroll-bands 25s linear infinite;
 }
 .brand-track:hover {
     animation-play-state: paused;
 }
 .brand-img {
- width: 320px;
- height: 220px;
+ width: 350px;
+ height: 180px;
  object-fit: contain;
- padding: 0 30px;
+ padding: 0 40px;
  filter: grayscale(100%);
- opacity: 0.6;
+ opacity: 0.7;
  transition: all 0.3s ease;  
 }
 .brand-img:hover {
@@ -95,5 +95,5 @@ body {
 }
 @keyframes scroll-bands {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-320px * 4)); }
+    100% { transform: translateX(calc(-350px * 4)); }
 }

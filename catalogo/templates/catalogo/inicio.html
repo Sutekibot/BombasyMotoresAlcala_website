@@ -2,48 +2,47 @@
 {% load static %}
 
 {% block content %}
-<section class="hero-section text-center text-lg-start">
-    <div class="container">
-        <div class="row align-items-center justify-content-between">
-            
-            <!-- Columna Izquierda: Textos (ocupa 6 columnas) -->
-            <div class="col-lg-6 mb-5 mb-lg-0">
+<!-- Sección de Presentación (Hero) -->
+<section class="hero-section text-center py-5">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
                 <h1 class="display-4 fw-bold hero-text mb-4">Potencia y Calidad Industrial</h1>
                 <p class="lead hero-text fw-medium mb-4">
                     Somos <strong>Motores Alcalá</strong>. Estamos contigo desde hace <strong>10 años</strong> y te ofrecemos el mejor catálogo de equipos industriales con distribución directa. Aumenta la eficiencia de tus proyectos comprando con expertos.
                 </p>
                 <a href="{% url 'lista_productos' %}" class="btn btn-primary btn-lg px-5 rounded-pill shadow">Ver Catálogo Completo</a>
             </div>
-            
-            <!-- Columna Derecha: Slider de Marcas (ocupa 5 columnas) -->
-            <div class="col-lg-5">
-                <div class="brand-slider-container text-center">
-                    <h5 class="fw-bold text-secondary mb-4">Marcas de Calidad que Manejamos</h5>
-                    <div class="brand-slider">
-                        <div class="brand-track">
-                            <!-- Bloque 1: Imágenes Originales -->
-                            <img src="{% static 'catalogo/img/marca1.png' %}" alt="Marca 1" class="brand-img">
-                            <img src="{% static 'catalogo/img/marca2.png' %}" alt="Marca 2" class="brand-img">
-                            <img src="{% static 'catalogo/img/marca3.png' %}" alt="Marca 3" class="brand-img">
-                            <img src="{% static 'catalogo/img/marca4.png' %}" alt="Marca 4" class="brand-img">
-                            <!-- Bloque 2: Clones idénticos (Necesarios para que el bucle se vea infinito) -->
-                            <img src="{% static 'catalogo/img/marca1.png' %}" alt="Marca 1" class="brand-img">
-                            <img src="{% static 'catalogo/img/marca2.png' %}" alt="Marca 2" class="brand-img">
-                            <img src="{% static 'catalogo/img/marca3.png' %}" alt="Marca 3" class="brand-img">
-                            <img src="{% static 'catalogo/img/marca4.png' %}" alt="Marca 4" class="brand-img">
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
+    </div>
+</section>
 
+<!-- Banda Horizontal de Marcas -->
+<section class="brand-banner pt-5 pb-5 bg-white border-bottom shadow-sm">
+    <div class="container text-center mb-4">
+        <h3 class="fw-bold text-secondary">Marcas de calidad que manejamos</h3>
+    </div>
+    <!-- Contenedor del Slider a todo lo ancho -->
+    <div class="brand-slider">
+        <div class="brand-track">
+            <!-- Bloque 1: Imágenes Originales -->
+            <img src="{% static 'catalogo/img/marca1.png' %}" alt="Marca 1" class="brand-img">
+            <img src="{% static 'catalogo/img/marca2.png' %}" alt="Marca 2" class="brand-img">
+            <img src="{% static 'catalogo/img/marca3.png' %}" alt="Marca 3" class="brand-img">
+            <img src="{% static 'catalogo/img/marca4.png' %}" alt="Marca 4" class="brand-img">
+            <!-- Bloque 2: Clones -->
+            <img src="{% static 'catalogo/img/marca1.png' %}" alt="Marca 1" class="brand-img">
+            <img src="{% static 'catalogo/img/marca2.png' %}" alt="Marca 2" class="brand-img">
+            <img src="{% static 'catalogo/img/marca3.png' %}" alt="Marca 3" class="brand-img">
+            <img src="{% static 'catalogo/img/marca4.png' %}" alt="Marca 4" class="brand-img">
         </div>
     </div>
 </section>
                                                                                                                                                                                                                                                                                                                                                                                                                                     
 <!-- Sección de Categorías -->
-<section class="container mt-5 pt-5 text-center">
+<section class="container mt-5 pt-5 pb-5 text-center">
     <h2 class="fw-bold mb-5 hero-text">CATEGORÍAS PRINCIPALES</h2>
-    <div class="row g-4">
+    <div class="row g-4 justify-content-center">
         <!-- Categoría 1: Motores -->
         <div class="col-md-4">
             <a href="{% url 'lista_productos' %}" class="categoria-card p-4 h-100">
@@ -70,6 +69,15 @@
                 <i class="fa-solid fa-cogs fa-4x mb-3" style="color: var(--azul-vibrante);"></i>
                 <h4 class="fw-bold">Reductores</h4>
                 <p class="text-muted">Coronas, sinfín y engranes industriales.</p>
+                <span class="btn btn-outline-primary btn-sm mt-2">Ver Modelos</span>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="{% url 'lista_productos' %}" class="categoria-card p-4 h-100">
+                <i class="fa-solid fa-cogs fa-4x mb-3" style="color: var(--azul-vibrante);"></i>
+                <h4 class="fw-bold">Refacciones Industriales</h4>
+                <p class="text-muted">Refacciones para equipos industriales.</p>
                 <span class="btn btn-outline-primary btn-sm mt-2">Ver Modelos</span>
             </a>
         </div>

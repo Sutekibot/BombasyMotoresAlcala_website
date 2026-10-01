@@ -1,37 +1,77 @@
 {% extends 'catalogo/base.html' %}
+{% load static %}
 
 {% block content %}
-<div class="row mb-4">
-    <div class="col-12">
-        <h2 class="fw-bold">Catálogo de Motores</h2>
-        <hr>
-    </div>
-</div>
+<div class="container my-5">
+    <div class="row">
+        
+        <!-- PANEL IZQUIERDO: Filtros y Búsqueda -->
+        <aside class="col-lg-3 mb-4">
+            <div class="card border-0 shadow-sm rounded-4 p-4" style="background-color: var(--azul-claro);">
+                <h5 class="fw-bold hero-text mb-4">Filtros de Búsqueda</h5>
+                
+                <form method="GET" action="{% url 'lista_productos' %}">
+                    <!-- Búsqueda por palabra clave -->
+                    <div class="mb-4">
+                        <label class="form-label text-secondary fw-bold">Palabra clave</label>
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Modelo, nombre...">
+                            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-search"></i></button>
+                        </div>
+                    </div>
 
-<div class="row">
-    {% for producto in productos %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm border-0">
-                <div class="card-body">
-                    <h5 class="card-title text-primary fw-bold">{{ producto.name }}</h5>
-                    <h6 class="card-subtitle mb-3 text-muted">SKU: {{ producto.code }}</h6>
+                    <!-- Filtro por Tipo -->
+                    <div class="mb-4">
+                        <label class="form-label text-secondary fw-bold">Clasificación</label>
+                        <select name="tipo" class="form-select">
+                            <option value="">Todos los equipos</option>
+                            <option value="Motor">Motores</option>
+                            <option value="Bomba">Bombas</option>
+                            <option value="Reductor">Reductores</option>
+                            <option value="Refacciones">Refacciones</option>
+                        </select>
+                    </div>
                     
-                    <p class="card-text">
-                        
-                        <strong>Clasificación:</strong> {{ producto.classification }} <br>
-                        <strong>Tipo:</strong> {{ producto.product_type }}
-                    </p>
-                </div>
-                <div class="card-footer bg-white border-top text-center">
-                    <span class="badge bg-success mb-2">Stock Disponible: {{ producto.stock_total }}</span>
-                    <button class="btn btn-outline-dark w-100">Ver Detalles</button>
-                </div>
+                    <button type="submit" class="btn btn-primary w-100 fw-bold rounded-pill">Aplicar Filtros</button>
+                </form>
             </div>
-        </div>
-    {% empty %}
-        <div class="col-12">
-            <div class="alert alert-warning">No hay motores disponibles en este momento.</div>
-        </div>
-    {% endfor %}
+        </aside>
+
+        <!-- PANEL DERECHO: Cuadrícula de Productos -->
+        <main class="col-lg-9">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for producto in productos %}
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 categoria-card">
+                        
+                        <!-- IMAGEN DEL PRODUCTO -->
+                        {% if producto.image %}
+                            <img src="{{ producto.image.url }}" class="card-img-top p-3" alt="{{ producto.name }}" style="height: 200px; object-fit: contain;">
+                        {% else %}
+                            <!-- Imagen por defecto (tu logo en gris) si aún no subes foto -->
+                            <img src="{% static 'catalogo/img/logo.png' %}" class="card-img-top p-4" style="height: 200px; object-fit: contain; filter: grayscale(100%); opacity: 0.3;">
+                        {% endif %}
+                        
+                        <!-- DETALLES -->
+                        <div class="card-body">
+                            <h6 class="card-title fw-bold hero-text">{{ producto.name }}</h6>
+                            <p class="text-muted small mb-1"><strong>Modelo:</strong> {{ producto.code }}</p>
+                        </div>
+                        
+                        <div class="card-footer bg-white border-0 pb-3">
+                            <a href="#" class="btn btn-outline-primary w-100 rounded-pill">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center py-5">
+                    <i class="fa-solid fa-box-open fa-3x text-muted mb-3"></i>
+                    <h4 class="text-secondary">Aún no hay productos registrados.</h4>
+                </div>
+                {% endfor %}
+            </div>
+        </main>
+
+    </div>
 </div>
 {% endblock %}
