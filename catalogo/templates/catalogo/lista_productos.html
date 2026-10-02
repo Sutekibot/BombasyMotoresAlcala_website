@@ -2,76 +2,75 @@
 {% load static %}
 
 {% block content %}
-<div class="container my-5">
+<div class="container-fluid px-4 px-xl-5 my-5">
     <div class="row">
         
-        <!-- PANEL IZQUIERDO: Filtros y Búsqueda -->
-        <aside class="col-lg-3 mb-4">
-            <div class="card border-0 shadow-sm rounded-4 p-4" style="background-color: var(--azul-claro);">
-                <h5 class="fw-bold hero-text mb-4">Filtros de Búsqueda</h5>
+        <!-- PANEL IZQUIERDO: Filtros -->
+        <aside class="col-lg-3 col-xl-2 mb-4">
+            <div class="card border-0 shadow-sm rounded-4 p-4 sticky-top" style="background-color: var(--azul-claro); top: 20px;">
+                <h5 class="fw-bold hero-text mb-4">Filtros</h5>
                 
                 <form method="GET" action="{% url 'lista_productos' %}">
-                    <!-- Búsqueda por palabra clave -->
-                    <div class="mb-4">
-                        <label class="form-label text-secondary fw-bold">Palabra clave</label>
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Modelo, nombre...">
-                            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-search"></i></button>
-                        </div>
-                    </div>
-
-                    <!-- Filtro por Tipo -->
                     <div class="mb-4">
                         <label class="form-label text-secondary fw-bold">Clasificación</label>
-                        <select name="tipo" class="form-select">
+                        <select name="categoria" class="form-select border-0 shadow-sm">
                             <option value="">Todos los equipos</option>
                             <option value="Motor">Motores</option>
                             <option value="Bomba">Bombas</option>
                             <option value="Reductor">Reductores</option>
-                            <option value="Refacciones">Refacciones</option>
+                            <option value="Refaccion">Refacciones</option>
                         </select>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary w-100 fw-bold rounded-pill">Aplicar Filtros</button>
+                    <button type="submit" class="btn btn-primary w-100 fw-bold rounded-pill shadow-sm">Aplicar Filtros</button>
                 </form>
             </div>
         </aside>
 
-        <!-- PANEL DERECHO: Cuadrícula de Productos -->
-        <main class="col-lg-9">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                {% for producto in productos %}
-                <div class="col">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 categoria-card">
-                        
-                        <!-- IMAGEN DEL PRODUCTO -->
-                        {% if producto.image %}
-                            <img src="{{ producto.image.url }}" class="card-img-top p-3" alt="{{ producto.name }}" style="height: 200px; object-fit: contain;">
-                        {% else %}
-                            <!-- Imagen por defecto (tu logo en gris) si aún no subes foto -->
-                            <img src="{% static 'catalogo/img/logo.png' %}" class="card-img-top p-4" style="height: 200px; object-fit: contain; filter: grayscale(100%); opacity: 0.3;">
-                        {% endif %}
-                        
-                        <!-- DETALLES -->
-                        <div class="card-body">
-                            <h6 class="card-title fw-bold hero-text">{{ producto.name }}</h6>
-                            <p class="text-muted small mb-1"><strong>Modelo:</strong> {{ producto.code }}</p>
-                        </div>
-                        
-                        <div class="card-footer bg-white border-0 pb-3">
-                            <a href="#" class="btn btn-outline-primary w-100 rounded-pill">Ver Detalles</a>
+        <!-- PANEL DERECHO: Buscador y Cuadrícula -->
+        <main class="col-lg-9 col-xl-10">
+            
+            <!-- BARRA DE BÚSQUEDA CORREGIDA -->
+            <form method="GET" action="{% url 'lista_productos' %}" class="mb-4">
+                <div class="input-group input-group-lg shadow-sm">
+                    <!-- El input-group previene que los elementos se estiren verticalmente de forma extraña -->
+                    <input type="text" name="q" class="form-control border-primary" placeholder="Buscar modelo, nombre, marca...">
+                    <button class="btn btn-primary px-5 fw-bold" type="submit"><i class="fa-solid fa-search"></i> Buscar</button>
+                </div>
+            </form>
+
+            <!-- CUADRÍCULA DE PRODUCTOS -->
+            {% if productos %}
+                <div class="row row-cols-1 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5 g-4">
+                    {% for producto in productos %}
+                    <div class="col">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 categoria-card">
+                            {% if producto.image %}
+                                <img src="{{ producto.image.url }}" class="card-img-top p-3" alt="{{ producto.name }}" style="height: 200px; object-fit: contain;">
+                            {% else %}
+                                <img src="{% static 'catalogo/img/logo.png' %}" class="card-img-top p-4" style="height: 200px; object-fit: contain; filter: grayscale(100%); opacity: 0.3;">
+                            {% endif %}
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold hero-text">{{ producto.name }}</h6>
+                                <p class="text-muted small mb-1"><strong>Modelo:</strong> {{ producto.code }}</p>
+                                <p class="text-muted small mb-1"><strong>Marca:</strong> {{ producto.manufacturer }}</p>
+                            </div>
+                            <div class="card-footer bg-white border-0 pb-3">
+                                <a href="#" class="btn btn-outline-primary w-100 rounded-pill">Ver Detalles</a>
+                            </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% empty %}
-                <div class="col-12 text-center py-5">
-                    <i class="fa-solid fa-box-open fa-3x text-muted mb-3"></i>
-                    <h4 class="text-secondary">Aún no hay productos registrados.</h4>
+            {% else %}
+                <!-- ESTADO VACÍO CENTRADO -->
+                <div class="d-flex flex-column justify-content-center align-items-center w-100" style="min-height: 50vh;">
+                    <i class="fa-solid fa-box-open fa-4x text-muted mb-4"></i>
+                    <h3 class="text-secondary fw-bold text-center">Aún no hay productos registrados</h3>
+                    <p class="text-muted text-center">Agrega productos desde el panel de administración o cambia tus filtros.</p>
                 </div>
-                {% endfor %}
-            </div>
-        </main>
+            {% endif %}
 
+        </main>
     </div>
 </div>
 {% endblock %}

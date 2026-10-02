@@ -20,7 +20,6 @@ class Product(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name='Nombre')
     code = models.CharField(max_length=50, unique=True, verbose_name='Código')
     product_type = models.CharField(max_length=100, verbose_name='Tipo')
-    classification = models.CharField(max_length=100, verbose_name='Clasificación')
     is_active = models.BooleanField(default=True, verbose_name='Estatus')
     manufacturer = models.CharField(max_length=100, verbose_name='Fabricante')
 
@@ -35,6 +34,20 @@ class Product(models.Model):
     description = models.TextField(verbose_name='Descripción del Producto')
     locations = models.ManyToManyField(Location, through='LocationInventory', verbose_name='Ubicaciones')
     image = models.ImageField(upload_to='productos/', null=True, blank=True, verbose_name='Imagen del Producto')
+
+    CATEGORY_CHOICES = [
+        ('Motor', 'Motor'),
+        ('Bomba', 'Bomba'),
+        ('Reductor', 'Reductor'),
+        ('Refaccion', 'Refacción'),
+        ('Otro', 'Otro'),
+    ]
+    category = models.CharField(
+        max_length=50,
+        choices=CATEGORY_CHOICES,
+        default='Otro',
+        verbose_name='Clasificación del Producto'
+    )
 
     @property
     def stock_total(self):

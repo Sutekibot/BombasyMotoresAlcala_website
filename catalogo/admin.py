@@ -14,9 +14,9 @@ class LocationAdmin(admin.ModelAdmin):
 #View of locations
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('code', 'name', 'classification', 'stock_total', 'is_active')
+    list_display = ('code', 'name', 'category', 'manufacturer', 'is_active')
     search_fields = ('code', 'name')
-    list_filter = ('is_active', 'product_type')
+    list_filter = ('is_active', 'manufacturer', 'category')
 
 #View of inventary
 @admin.register(LocationInventory)
