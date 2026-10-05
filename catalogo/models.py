@@ -18,7 +18,8 @@ class Location(models.Model):
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100, unique=True, verbose_name='Nombre')
-    code = models.CharField(max_length=50, unique=True, verbose_name='Código')
+    code = models.CharField(max_length=50, unique=True, verbose_name='SKU')
+    model = models.CharField(max_length=100, null=True, blank=True, verbose_name='Modelo')
     product_type = models.CharField(max_length=100, verbose_name='Tipo')
     is_active = models.BooleanField(default=True, verbose_name='Estatus')
     manufacturer = models.CharField(max_length=100, verbose_name='Fabricante')
