@@ -9,10 +9,11 @@ def lista_productos(request):
     producto = Product.objects.all()
     query = request.GET.get('q')
     filtrer_category = request.GET.get('category')
+    filtrer_manufacturer = request.GET.get('manufacturer')
     if query:
         producto = producto.filter(
             Q(name__icontains=query) |
-            Q(code__icontains=query) |
+            Q(model__icontains=query) |
             Q(product_type__icontains=query) |
             Q(manufacturer__icontains=query) |
             Q(material__icontains=query) |
@@ -21,4 +22,8 @@ def lista_productos(request):
         )
     if filtrer_category:
         producto = producto.filter(category=filtrer_category)
-    return render(request, 'catalogo/lista_productos.html', {'productos': producto}) 
+    if filtrer_manufacturer:
+        producto = producto.filter(manufacturer=filtrer_manufacturer)
+    marcas_unicas = Product.objects.values_list('manufacturer', flat=True).distinct()
+    return render(request, 'catalogo/lista_productos.html', {'productos': producto, 'manufacturers': marcas_unicas}) 
+

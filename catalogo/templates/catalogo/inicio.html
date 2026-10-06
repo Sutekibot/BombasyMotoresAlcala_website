@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block content %}
-<!-- Sección de Presentación (Hero) -->
 <section class="hero-section text-center py-5">
     <div class="container my-5">
         <div class="row justify-content-center">
@@ -17,20 +16,17 @@
     </div>
 </section>
 
-<!-- Banda Horizontal de Marcas -->
 <section class="brand-banner pt-5 pb-5 bg-white border-bottom shadow-sm">
     <div class="container text-center mb-4">
         <h3 class="fw-bold text-secondary">Marcas de calidad que manejamos</h3>
     </div>
-    <!-- Contenedor del Slider a todo lo ancho -->
     <div class="brand-slider">
         <div class="brand-track">
-            <!-- Bloque 1: Imágenes Originales -->
             <img src="{% static 'catalogo/img/marca1.png' %}" alt="Marca 1" class="brand-img">
             <img src="{% static 'catalogo/img/marca2.png' %}" alt="Marca 2" class="brand-img">
             <img src="{% static 'catalogo/img/marca3.png' %}" alt="Marca 3" class="brand-img">
             <img src="{% static 'catalogo/img/marca4.png' %}" alt="Marca 4" class="brand-img">
-            <!-- Bloque 2: Clones -->
+
             <img src="{% static 'catalogo/img/marca1.png' %}" alt="Marca 1" class="brand-img">
             <img src="{% static 'catalogo/img/marca2.png' %}" alt="Marca 2" class="brand-img">
             <img src="{% static 'catalogo/img/marca3.png' %}" alt="Marca 3" class="brand-img">
@@ -39,13 +35,11 @@
     </div>
 </section>
                                                                                                                                                                                                                                                                                                                                                                                                                                     
-<!-- Sección de Categorías -->
 <section class="container mt-5 pt-5 pb-5 text-center">
     <h2 class="fw-bold mb-5 hero-text">CATEGORÍAS PRINCIPALES</h2>
     <div class="row g-4 justify-content-center">
-        <!-- Categoría 1: Motores -->
         <div class="col-md-4">
-            <a href="{% url 'lista_productos' %}" class="categoria-card p-4 h-100">
+            <a href="{% url 'lista_productos' %}?category=Motor" class="categoria-card p-4 h-100">
                 <i class="fa-solid fa-gear fa-4x mb-3" style="color: var(--azul-vibrante);"></i>
                 <h4 class="fw-bold">Motores</h4>
                 <p class="text-muted">Eléctricos, trifásicos y monofásicos.</p>
@@ -53,9 +47,8 @@
             </a>
         </div>
         
-        <!-- Categoría 2: Bombas -->
         <div class="col-md-4">
-            <a href="{% url 'lista_productos' %}" class="categoria-card p-4 h-100">
+            <a href="{% url 'lista_productos' %}?category=Bomba" class="categoria-card p-4 h-100">
                 <i class="fa-solid fa-water fa-4x mb-3" style="color: var(--azul-vibrante);"></i>
                 <h4 class="fw-bold">Bombas</h4>
                 <p class="text-muted">Sumergibles, centrífugas y de presión.</p>
@@ -63,9 +56,8 @@
             </a>
         </div>
 
-        <!-- Categoría 3: Reductores -->
         <div class="col-md-4">
-            <a href="{% url 'lista_productos' %}" class="categoria-card p-4 h-100">
+            <a href="{% url 'lista_productos' %}?category=Reductor" class="categoria-card p-4 h-100">
                 <i class="fa-solid fa-cogs fa-4x mb-3" style="color: var(--azul-vibrante);"></i>
                 <h4 class="fw-bold">Reductores</h4>
                 <p class="text-muted">Coronas, sinfín y engranes industriales.</p>
@@ -74,7 +66,7 @@
         </div>
 
         <div class="col-md-4">
-            <a href="{% url 'lista_productos' %}" class="categoria-card p-4 h-100">
+            <a href="{% url 'lista_productos' %}?category=Refaccion" class="categoria-card p-4 h-100">
                 <i class="fa-solid fa-cogs fa-4x mb-3" style="color: var(--azul-vibrante);"></i>
                 <h4 class="fw-bold">Refacciones Industriales</h4>
                 <p class="text-muted">Refacciones para equipos industriales.</p>
