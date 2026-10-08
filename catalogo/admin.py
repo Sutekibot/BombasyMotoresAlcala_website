@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User, Product, Location, LocationInventory
+from .models import User, Product, Location, LocationInventory, ProductImage
 
 admin.site.register(User, UserAdmin)
 
@@ -13,12 +13,16 @@ class LocationInventoryInline(admin.TabularInline):
     model = LocationInventory
     extra = 1
 
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+    extra = 5
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('code', 'model', 'name', 'category', 'manufacturer', 'is_active')
     search_fields = ('code', 'model', 'name')
     list_filter = ('is_active', 'manufacturer', 'category')
-    inlines = [LocationInventoryInline]
+    inlines = [LocationInventoryInline, ProductImageInline]
 
 @admin.register(LocationInventory)
 class LocationInventoryAdmin(admin.ModelAdmin):

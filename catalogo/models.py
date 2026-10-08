@@ -71,3 +71,14 @@ class LocationInventory(models.Model):
         
     def __str__(self):
         return f"{self.product.name} - {self.location.name} (Stock: {self.stock})"
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images', verbose_name='Producto')
+    image = models.ImageField(upload_to='productos/gallery', verbose_name='Imagen Adicional')
+
+    class Meta:
+        verbose_name = 'Imagen del Producto'
+        verbose_name_plural = 'Imágenes del Producto'
+
+    def __str__(self):
+        return f"Imagen de {self.product.name}" 

@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import Product
+from django.shortcuts import render, get_object_or_404
+from .models import Product, LocationInventory, ProductImage 
 from django.db.models import Q
 
 def inicio(request):
@@ -25,5 +25,15 @@ def lista_productos(request):
     if filtrer_manufacturer:
         producto = producto.filter(manufacturer=filtrer_manufacturer)
     marcas_unicas = Product.objects.values_list('manufacturer', flat=True).distinct()
-    return render(request, 'catalogo/lista_productos.html', {'productos': producto, 'manufacturers': marcas_unicas}) 
+    return render(request, 'catalogo/lista_productos.html', {'productos': producto, 'manufacturers': marcas_unicas})
 
+def producto(request, producto_id):
+    producto = get_object_or_404(Product, id=producto_id)
+    inventario = LocationInventory.objects.filter(product=producto)
+    imagenes_extra = ProductImage.objects.filter(product=producto)
+    
+    return render(request, 'catalogo/producto.html', {
+        'producto': producto,
+        'inventario': inventario,
+        'imagenes_extra': imagenes_extra
+    })
