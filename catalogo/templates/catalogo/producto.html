@@ -12,18 +12,15 @@
             
             <div class="col-md-5 bg-light p-4 d-flex flex-column align-items-center justify-content-center">
                 {% if producto.image or imagenes_extra %}
-                    <!-- Carrusel Principal -->
                     <div id="galeriaProducto" class="carousel slide carousel-dark w-100 mb-3" data-bs-ride="false">
                         <div class="carousel-inner rounded bg-white shadow-sm p-3">
                             
-                            <!-- 1. Imagen Principal (Portada) -->
                             {% if producto.image %}
                             <div class="carousel-item active text-center">
                                 <img src="{{ producto.image.url }}" class="img-fluid" alt="{{ producto.name }}" style="height: 350px; object-fit: contain;">
                             </div>
                             {% endif %}
 
-                            <!-- 2. Imágenes Adicionales de la Galería -->
                             {% for img_extra in imagenes_extra %}
                             <div class="carousel-item {% if not producto.image and forloop.first %}active{% endif %} text-center">
                                 <img src="{{ img_extra.image.url }}" class="img-fluid" alt="{{ producto.name }}" style="height: 350px; object-fit: contain;">
@@ -32,7 +29,6 @@
 
                         </div>
 
-                        <!-- Flechas de navegación -->
                         {% if imagenes_extra %}
                         <button class="carousel-control-prev" type="button" data-bs-target="#galeriaProducto" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -45,7 +41,6 @@
                         {% endif %}
                     </div>
 
-                    <!-- Miniaturas debajo de la foto principal -->
                     <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
                         {% if producto.image %}
                         <button type="button" data-bs-target="#galeriaProducto" data-bs-slide-to="0" class="border rounded p-1 bg-white shadow-sm" style="width: 65px; height: 65px;">
@@ -61,11 +56,9 @@
                     </div>
 
                 {% else %}
-                    <!-- Si no tiene ninguna foto cargada -->
                     <img src="{% static 'catalogo/img/logo.png' %}" class="img-fluid p-5" alt="Sin imagen" style="max-height: 300px; object-fit: contain; filter: grayscale(100%); opacity: 0.3;">
                 {% endif %}
             </div>
-            <!-- COLUMNA 2: Información y Detalles del Producto (Derecha) -->
             <div class="col-md-7 p-4 p-lg-5">
                 <span class="badge bg-primary mb-2 px-3 py-2 rounded-pill">{{ producto.category }}</span>
                 <h2 class="fw-bold mb-3">{{ producto.name }}</h2>
@@ -85,21 +78,20 @@
                 </div>
                 {% endif %}
 
-                <!-- Especificaciones Físicas -->
                 <div class="mb-4">
                     <h5 class="fw-bold mb-3">Especificaciones Técnicas</h5>
                     <div class="row row-cols-2 row-cols-sm-3 g-3">
                         {% if producto.weight %}
-                        <div class="col"><div class="p-2 border rounded bg-light"><small class="text-muted d-block">Peso</small><strong>{{ producto.weight }} kg</strong></div></div>
+                        <div class="col"><div class="p-2 border rounded bg-light"><small class="text-muted d-block">Peso</small><strong>{{ producto.weight|floatformat:"-2" }} kg</strong></div></div>
                         {% endif %}
                         {% if producto.height %}
-                        <div class="col"><div class="p-2 border rounded bg-light"><small class="text-muted d-block">Altura</small><strong>{{ producto.height }} cm</strong></div></div>
+                        <div class="col"><div class="p-2 border rounded bg-light"><small class="text-muted d-block">Altura</small><strong>{{ producto.height|floatformat:"-2" }} cm</strong></div></div>
                         {% endif %}
                         {% if producto.width %}
-                        <div class="col"><div class="p-2 border rounded bg-light"><small class="text-muted d-block">Ancho</small><strong>{{ producto.width }} cm</strong></div></div>
+                        <div class="col"><div class="p-2 border rounded bg-light"><small class="text-muted d-block">Ancho</small><strong>{{ producto.width|floatformat:"-2" }} cm</strong></div></div>
                         {% endif %}
                         {% if producto.length %}
-                        <div class="col"><div class="p-2 border rounded bg-light"><small class="text-muted d-block">Largo</small><strong>{{ producto.length }} cm</strong></div></div>
+                        <div class="col"><div class="p-2 border rounded bg-light"><small class="text-muted d-block">Largo</small><strong>{{ producto.length|floatformat:"-2" }} cm</strong></div></div>
                         {% endif %}
                         {% if producto.material %}
                         <div class="col"><div class="p-2 border rounded bg-light"><small class="text-muted d-block">Material</small><strong>{{ producto.material }}</strong></div></div>
@@ -110,7 +102,6 @@
                     </div>
                 </div>
 
-                <!-- Disponibilidad en Sucursales -->
                 {% if inventario %}
                 <div class="mb-4">
                     <h5 class="fw-bold mb-3">Disponibilidad por Ubicación</h5>

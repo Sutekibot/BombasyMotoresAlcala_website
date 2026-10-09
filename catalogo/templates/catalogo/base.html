@@ -28,14 +28,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
                 </div>
                 <div class="offcanvas-body align-items-center">
-                    
-                    <form class="d-flex d-lg-none mb-4 w-100" method="GET" action="{% url 'lista_productos' %}">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control border-primary" placeholder="Buscar...">
-                            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-search"></i></button>
-                        </div>
-                    </form>
-
                     <ul class="navbar-nav ms-auto gap-3 mt-3 mt-lg-0">
                         <li class="nav-item">
                             <a class="nav-btn d-block d-lg-inline-block text-center" href="{% url 'inicio' %}">Inicio</a>
