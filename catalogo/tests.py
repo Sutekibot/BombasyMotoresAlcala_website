@@ -44,7 +44,7 @@ class VistasCatalogoTests(TestCase):
     # 4. PRUEBA: ¿Carga bien la página de detalles de un producto?
     def test_detalle_producto_carga_bien(self):
         # Usamos el UUID real del motor que creamos en el setUp
-        url = reverse('detalle_producto', args=[self.motor.id])
+        url = reverse('producto', args=[self.motor.id])
         response = self.client.get(url)
         
         self.assertEqual(response.status_code, 200)
@@ -54,7 +54,7 @@ class VistasCatalogoTests(TestCase):
     # 5. PRUEBA: ¿Qué pasa si alguien inventa una URL con un UUID falso?
     def test_detalle_producto_no_existente_da_404(self):
         uuid_falso = uuid.uuid4() # Generamos un UUID al azar
-        url = reverse('detalle_producto', args=[uuid_falso])
+        url = reverse('producto', args=[uuid_falso])
         response = self.client.get(url)
         
         # Debe dar error 404 (Página no encontrada), no debe "romperse" el servidor (500)
