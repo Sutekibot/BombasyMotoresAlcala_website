@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,3 +129,11 @@ AUTH_USER_MODEL = 'catalogo.User'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Admin Motores Alcalá",
+    "site_header": "Motores Alcalá",
+    "site_brand": "Panel de Control",
+    "welcome_sign": "Bienvenido al sistema de Motores Alcalá",
+    "show_ui_builder": True,
+}
